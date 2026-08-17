@@ -1,23 +1,120 @@
-body {
+/* ================================
+   IMPOSTAZIONI GLOBALI
+================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  background-color: #0d1116;
+  scrollbar-color: #7f18c9 #0d1116;
+  scrollbar-width: thin;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: #0d1116;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
     sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   font-size: 1.1rem !important;
 }
 
+#root {
+  overflow-x: hidden;
+  background-color: #0d1116;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace !important;
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Courier New",
+    monospace !important;
+
   font-size: 1rem !important;
 }
 
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #0d1116;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7f18c9;
+  border: 2px solid #0d1116;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #9b32e5;
+}
+
+
+/* ================================
+   CONTENITORE PRINCIPALE
+================================ */
+
 .main-container {
   position: relative;
-  background-color: #0d1116;
 
+  width: 100%;
+  min-width: 100%;
+  min-height: 100vh;
+
+  overflow-x: hidden;
+  background-color: #0d1116;
 }
+
+/* Il contenitore creato da FadeIn occupa tutta la larghezza */
+
+.main-container > div {
+  width: 100%;
+  max-width: none;
+}
+
+
+/* ================================
+   ELEMENTI GENERALI
+================================ */
 
 a {
   text-decoration: none;
@@ -25,23 +122,42 @@ a {
 
 a:hover {
   color: #5000ca;
-  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
 }
 
-p, a, h1, h2, h3, h4, h5, label, button {
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+label,
+button {
   color: white;
   font-family: "Lato", sans-serif;
 }
 
+
+/* ================================
+   NAVIGAZIONE
+================================ */
+
 .navigation-bar {
   justify-content: space-between;
+  width: 100%;
   background-color: #0d1116;
 
   button {
-    font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
-    text-transform: initial;
     padding: 6px 10px;
+
+    font-family: "Lato", sans-serif;
+    font-size: 1.1rem;
+    text-transform: initial;
   }
 
   svg {
@@ -50,62 +166,104 @@ p, a, h1, h2, h3, h4, h5, label, button {
 }
 
 .navigation-bar-responsive {
-  span, p {
+  span,
+  p {
     color: #0d1116;
     font-family: "Lato", sans-serif;
   }
 }
 
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-weight: bold;
+}
+
+
+/* ================================
+   CONTENITORI DELLE SEZIONI
+================================ */
+
 .container {
-  margin-top: 64px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  width: 100%;
+  max-width: 100%;
+  margin-top: 64px;
 }
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  max-width: 100%;
+  padding: 5% 10%;
+
+  text-align: left;
+}
+
+
+/* ================================
+   IMMAGINE PRINCIPALE
+================================ */
 
 .header-image {
   width: 100%;
+  max-width: 100%;
   height: 450px;
+  overflow: hidden;
 
   img {
+    display: block;
+
     width: 100%;
     height: 450px;
+
     object-fit: cover;
   }
 }
 
-.mobile-menu-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  font-weight: bold;
-}
 
-.items-container {
-  padding: 5% 10%;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+/* ================================
+   MODALITÀ CHIARA
+================================ */
 
 .light-mode {
+  width: 100%;
+  min-height: 100vh;
   background-color: #f8f9fa;
 
   .navigation-bar {
     background-color: #f8f9fa;
   }
 
-  p, a, h1, h2, h3, h4, h5, label, button {
+  p,
+  a,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  label,
+  button {
     color: #0d1116;
   }
 
   a:hover {
     color: #5000ca;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out;
   }
 
   .navigation-bar svg {
@@ -122,18 +280,28 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   .chip {
     background-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+
+    box-shadow:
+      0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
 
   .vertical-timeline::before {
     background-color: rgba(0, 0, 0, 0.08);
   }
 
-  .vertical-timeline--animate .vertical-timeline-element-content.bounce-in {
-    box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  .vertical-timeline--animate
+    .vertical-timeline-element-content.bounce-in {
+    box-shadow:
+      0 3px 1px -2px rgba(0, 0, 0, 0.2),
+      0 2px 2px 0 rgba(0, 0, 0, 0.14),
+      0 1px 5px 0 rgba(0, 0, 0, 0.12);
   }
 
-  .vertical-timeline--two-columns .vertical-timeline-element-content .vertical-timeline-element-date {
+  .vertical-timeline--two-columns
+    .vertical-timeline-element-content
+    .vertical-timeline-element-date {
     color: gray;
   }
 
@@ -146,10 +314,52 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 }
 
-@media screen {
-  @media (max-width: 768px) {
-    .items-container {
-      padding: 5% 5%;
+
+/* ================================
+   TABLET E SMARTPHONE
+================================ */
+
+@media screen and (max-width: 768px) {
+  html,
+  body,
+  #root,
+  .main-container {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .main-container {
+    overflow-x: hidden;
+  }
+
+  .main-container > div {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .items-container {
+    width: 100%;
+    padding: 5%;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .header-image {
+    width: 100%;
+    height: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+      min-height: 350px;
     }
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
   }
 }
