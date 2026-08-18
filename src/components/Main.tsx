@@ -7,7 +7,7 @@ function Main() {
 
   return (
     <div className="container">
-      <div className="about-section">
+      <div className="hero-section">
         <div className="image-wrapper">
           <img src="https://res.cloudinary.com/dif1ebwyb/image/upload/v1786978451/ChatGPT_Image_16_ago_2026_16_39_25_joaple.png" alt="Avatar" />
         </div>
