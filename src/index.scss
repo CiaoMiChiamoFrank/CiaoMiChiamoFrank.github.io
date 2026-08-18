@@ -261,15 +261,15 @@ button {
 
 
 /* ================================
-   SFONDO DELLA SEZIONE ABOUT
+   SFONDO DELLA HERO IN MODALITÀ SCURA
 ================================ */
 
 /*
- * Lo sfondo decorativo viene applicato esclusivamente
- * alla sezione About e non all'intera pagina.
+ * Lo sfondo decorativo viene applicato soltanto alla
+ * sezione iniziale con il nome Francesco Pio Contaldo.
  */
 
-.about-section {
+.dark-mode .hero-section {
   position: relative;
 
   width: 100%;
@@ -277,7 +277,7 @@ button {
   background-color: #0d1116;
   background-image: url("./assets/images/bg-dark.png");
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center;
   background-size: cover;
   background-attachment: scroll;
 
@@ -326,13 +326,24 @@ button {
     color: #0d1116;
   }
 
-  .about-section {
+  /*
+   * Sfondo chiaro della sezione iniziale.
+   * Questa regola sostituisce lo sfondo scuro anche su iPhone.
+   */
+
+  .hero-section {
+    position: relative;
+
+    width: 100%;
+
     background-color: #f8f9fa;
     background-image: url("./assets/images/bg-light.png");
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center;
     background-size: cover;
     background-attachment: scroll;
+
+    overflow: hidden;
   }
 
   .skills-container svg {
@@ -381,8 +392,8 @@ button {
 ================================ */
 
 /*
- * Safari iOS può gestire male gli sfondi fixed
- * e ridimensionare in modo anomalo le immagini.
+ * Safari iOS può gestire male gli sfondi fixed.
+ * Entrambe le versioni della hero utilizzano uno sfondo scroll.
  */
 
 @supports (-webkit-touch-callout: none) {
@@ -395,11 +406,11 @@ button {
     background-attachment: scroll;
   }
 
-  .about-section,
-  .light-mode .about-section {
+  .dark-mode .hero-section,
+  .light-mode .hero-section {
     background-attachment: scroll;
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center;
     background-size: cover;
   }
 }
@@ -451,9 +462,10 @@ button {
     }
   }
 
-  .about-section {
+  .dark-mode .hero-section,
+  .light-mode .hero-section {
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: center;
     background-size: cover;
     background-attachment: scroll;
   }
@@ -477,9 +489,11 @@ button {
     padding: 40px 5%;
   }
 
-  .about-section {
-    background-position: center top;
+  .dark-mode .hero-section,
+  .light-mode .hero-section {
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
+    background-attachment: scroll;
   }
 }
