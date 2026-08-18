@@ -1,5 +1,5 @@
 /* ================================
-   IMPOSTAZIONI GLOBALI
+   RESET E IMPOSTAZIONI GLOBALI
 ================================ */
 
 *,
@@ -14,21 +14,25 @@ body,
   width: 100%;
   min-width: 100%;
   min-height: 100%;
+
   margin: 0;
   padding: 0;
+
+  overflow-x: hidden;
+
+  background-color: #0d1116;
+  background-image: none;
 }
 
 html {
-  overflow-x: hidden;
-  background-color: #0d1116;
   scrollbar-color: #7f18c9 #0d1116;
   scrollbar-width: thin;
+
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
-  overflow-x: hidden;
-  background-color: #0d1116;
-
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -42,15 +46,10 @@ body {
     "Helvetica Neue",
     sans-serif;
 
+  font-size: 1.1rem !important;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  font-size: 1.1rem !important;
-}
-
-#root {
-  overflow-x: hidden;
-  background-color: #0d1116;
 }
 
 code {
@@ -63,6 +62,12 @@ code {
     monospace !important;
 
   font-size: 1rem !important;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 
@@ -101,19 +106,37 @@ code {
   min-height: 100vh;
 
   overflow-x: hidden;
+
   background-color: #0d1116;
+  background-image: none;
 }
 
-/* Il contenitore creato da FadeIn occupa tutta la larghezza */
+/*
+ * Il componente FadeIn genera un contenitore aggiuntivo.
+ * Questa regola gli impone di occupare tutta la pagina.
+ */
 
 .main-container > div {
   width: 100%;
-  max-width: none;
+  max-width: 100%;
 }
 
 
 /* ================================
-   ELEMENTI GENERALI
+   MODALITÀ SCURA
+================================ */
+
+.dark-mode {
+  width: 100%;
+  min-height: 100vh;
+
+  background-color: #0d1116;
+  background-image: none;
+}
+
+
+/* ================================
+   TESTI E LINK
 ================================ */
 
 a {
@@ -138,7 +161,7 @@ h4,
 h5,
 label,
 button {
-  color: white;
+  color: #ffffff;
   font-family: "Lato", sans-serif;
 }
 
@@ -149,8 +172,11 @@ button {
 
 .navigation-bar {
   justify-content: space-between;
+
   width: 100%;
+
   background-color: #0d1116;
+  background-image: none;
 
   button {
     padding: 6px 10px;
@@ -195,6 +221,7 @@ button {
 
   width: 100%;
   max-width: 100%;
+
   margin-top: 64px;
 }
 
@@ -205,6 +232,7 @@ button {
 
   width: 100%;
   max-width: 100%;
+
   padding: 5% 10%;
 
   text-align: left;
@@ -219,16 +247,41 @@ button {
   width: 100%;
   max-width: 100%;
   height: 450px;
+
   overflow: hidden;
 
   img {
-    display: block;
-
     width: 100%;
     height: 450px;
 
     object-fit: cover;
+    object-position: center;
   }
+}
+
+
+/* ================================
+   SFONDO DELLA SEZIONE ABOUT
+================================ */
+
+/*
+ * Lo sfondo decorativo viene applicato esclusivamente
+ * alla sezione About e non all'intera pagina.
+ */
+
+.about-section {
+  position: relative;
+
+  width: 100%;
+
+  background-color: #0d1116;
+  background-image: url("./assets/images/bg-dark.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: scroll;
+
+  overflow: hidden;
 }
 
 
@@ -239,10 +292,13 @@ button {
 .light-mode {
   width: 100%;
   min-height: 100vh;
+
   background-color: #f8f9fa;
+  background-image: none;
 
   .navigation-bar {
     background-color: #f8f9fa;
+    background-image: none;
   }
 
   p,
@@ -271,7 +327,12 @@ button {
   }
 
   .about-section {
+    background-color: #f8f9fa;
     background-image: url("./assets/images/bg-light.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: scroll;
   }
 
   .skills-container svg {
@@ -316,6 +377,35 @@ button {
 
 
 /* ================================
+   CORREZIONI SPECIFICHE PER IOS
+================================ */
+
+/*
+ * Safari iOS può gestire male gli sfondi fixed
+ * e ridimensionare in modo anomalo le immagini.
+ */
+
+@supports (-webkit-touch-callout: none) {
+  html,
+  body,
+  #root,
+  .main-container,
+  .dark-mode,
+  .light-mode {
+    background-attachment: scroll;
+  }
+
+  .about-section,
+  .light-mode .about-section {
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+  }
+}
+
+
+/* ================================
    TABLET E SMARTPHONE
 ================================ */
 
@@ -323,13 +413,13 @@ button {
   html,
   body,
   #root,
-  .main-container {
+  .main-container,
+  .dark-mode,
+  .light-mode {
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-  }
 
-  .main-container {
     overflow-x: hidden;
   }
 
@@ -340,6 +430,8 @@ button {
 
   .items-container {
     width: 100%;
+    max-width: 100%;
+
     padding: 5%;
   }
 
@@ -359,7 +451,35 @@ button {
     }
   }
 
+  .about-section {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: scroll;
+  }
+
   ::-webkit-scrollbar {
     width: 6px;
+  }
+}
+
+
+/* ================================
+   SMARTPHONE PICCOLI
+================================ */
+
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 1rem !important;
+  }
+
+  .items-container {
+    padding: 40px 5%;
+  }
+
+  .about-section {
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
